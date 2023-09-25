@@ -14,8 +14,12 @@ class TeXViewFontStyle {
   /// Font size unit.
   final TeXViewSizeUnit? sizeUnit;
 
-  TeXViewFontStyle(
-      {this.fontSize, this.fontFamily, this.sizeUnit, this.fontWeight});
+  TeXViewFontStyle({
+    this.fontSize,
+    this.fontFamily,
+    this.sizeUnit,
+    this.fontWeight,
+  });
 
   String initFontStyle() {
     return "${fontSize != null ? "font-size: " + getSizeWithUnit(fontSize, sizeUnit) + ";" : ""}${fontFamily != null ? "font-family: " + fontFamily! + ";" : ""}${fontWeight != null ? "font-weight: " + _getFontWeightValue(fontWeight) + ";" : ""}";

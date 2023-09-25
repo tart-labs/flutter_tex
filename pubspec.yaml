@@ -12,11 +12,13 @@ environment:
 
 
 dependencies:
-  webview_flutter_plus: ^0.3.0+2
+  webview_flutter: ^4.2.3
   markdown: ^4.0.1
 
   flutter:
     sdk: flutter
+  # Latest versions of pointer interceptor does not support for dialog
+  pointer_interceptor: 0.9.1
 
 dev_dependencies:
   flutter_test:

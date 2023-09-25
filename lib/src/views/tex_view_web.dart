@@ -2,27 +2,44 @@
 
 import 'dart:html' as html;
 import 'dart:js' as js;
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:flutter_tex/src/utils/core_utils.dart';
 import 'package:flutter_tex/src/utils/fake_ui.dart'
     if (dart.library.html) 'dart:ui' as ui;
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 
 class TeXViewState extends State<TeXView> {
   String? _lastData;
-  double widgetHeight = minHeight;
+  ValueNotifier<double> widgetHeight = ValueNotifier(minHeight);
   final String _viewId = UniqueKey().toString();
 
   @override
   Widget build(BuildContext context) {
     _initTeXView();
-    return SizedBox(
-      height: widgetHeight,
-      child: HtmlElementView(
-        key: widget.key ?? ValueKey(_viewId),
-        viewType: _viewId,
-      ),
+    return ValueListenableBuilder<double>(
+      valueListenable: widgetHeight,
+      builder: (context, height, _) {
+        return Stack(
+          children: [
+            SizedBox(
+              height: height,
+              child: HtmlElementView(
+                key: ValueKey(_viewId),
+                viewType: _viewId,
+              ),
+            ),
+            if (widget.disableGesturesOnWeb)
+              PointerInterceptor(
+                child: SizedBox(
+                  height: height,
+                  width: MediaQuery.of(context).size.width,
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 
@@ -42,13 +59,10 @@ class TeXViewState extends State<TeXView> {
           ..style.height = '100%'
           ..style.width = '100%'
           ..style.border = '0');
-
-    js.context['TeXViewRenderedCallback'] = (message) {
+    js.context['TeXViewRenderedCallback_$_viewId'] = (message) {
       double viewHeight = double.parse(message.toString());
-      if (viewHeight != widgetHeight) {
-        setState(() {
-          widgetHeight = viewHeight;
-        });
+      if (viewHeight != widgetHeight.value) {
+        widgetHeight.value = viewHeight;
       }
     };
 
