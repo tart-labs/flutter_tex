@@ -34,60 +34,61 @@ class _TeXViewInkWellExampleState extends State<TeXViewInkWellExample> {
         title: Text("TeXViewInkWell: You tapped: $tappedId"),
       ),
       body: TeXView(
-          renderingEngine: widget.renderingEngine,
-          child: TeXViewColumn(children: [
-            TeXViewInkWell(
-                child: const TeXViewDocument(
-                    r"""<h2>\( \rm\\TeXViewInkWell\) 1 with ripple</h2>"""),
-                style: _teXViewStyle,
-                id: "inkwell_1",
-                rippleEffect: true,
-                onTap: tapCallbackHandler),
-            TeXViewInkWell(
-                child: const TeXViewDocument(
-                    r"""<h2>\( \rm\\TeXViewInkWell\) 2 without ripple</h2>"""),
-                style: _teXViewStyle,
-                id: "inkwell_2",
-                rippleEffect: false,
-                onTap: tapCallbackHandler),
-            TeXViewInkWell(
-                child: const TeXViewDocument(
-                    r"""<h2>\( \rm\\TeXViewInkWell\) 3 with ripple</h2>"""),
-                style: _teXViewStyle,
-                id: "inkwell_3",
-                rippleEffect: true,
-                onTap: tapCallbackHandler),
-            TeXViewInkWell(
-                child: const TeXViewDocument(
-                    r"""<h2>\( \rm\\TeXViewInkWell\) 4 without ripple</h2>"""),
-                style: _teXViewStyle,
-                id: "inkwell_4",
-                rippleEffect: false,
-                onTap: tapCallbackHandler),
-          ]),
-          style: const TeXViewStyle(
-            margin: TeXViewMargin.all(5),
-            padding: TeXViewPadding.all(10),
-            borderRadius: TeXViewBorderRadius.all(10),
-            border: TeXViewBorder.all(
-              TeXViewBorderDecoration(
-                  borderColor: Colors.blue,
-                  borderStyle: TeXViewBorderStyle.solid,
-                  borderWidth: 5),
-            ),
-            backgroundColor: Colors.white,
+        renderingEngine: widget.renderingEngine,
+        child: TeXViewColumn(children: [
+          TeXViewInkWell(
+              child: const TeXViewDocument(
+                  r"""<h2>\( \rm\\TeXViewInkWell\) 1 with ripple</h2>"""),
+              style: _teXViewStyle,
+              id: "inkwell_1",
+              rippleEffect: true,
+              onTap: tapCallbackHandler),
+          TeXViewInkWell(
+              child: const TeXViewDocument(
+                  r"""<h2>\( \rm\\TeXViewInkWell\) 2 without ripple</h2>"""),
+              style: _teXViewStyle,
+              id: "inkwell_2",
+              rippleEffect: false,
+              onTap: tapCallbackHandler),
+          TeXViewInkWell(
+              child: const TeXViewDocument(
+                  r"""<h2>\( \rm\\TeXViewInkWell\) 3 with ripple</h2>"""),
+              style: _teXViewStyle,
+              id: "inkwell_3",
+              rippleEffect: true,
+              onTap: tapCallbackHandler),
+          TeXViewInkWell(
+              child: const TeXViewDocument(
+                  r"""<h2>\( \rm\\TeXViewInkWell\) 4 without ripple</h2>"""),
+              style: _teXViewStyle,
+              id: "inkwell_4",
+              rippleEffect: false,
+              onTap: tapCallbackHandler),
+        ]),
+        style: const TeXViewStyle(
+          margin: TeXViewMargin.all(5),
+          padding: TeXViewPadding.all(10),
+          borderRadius: TeXViewBorderRadius.all(10),
+          border: TeXViewBorder.all(
+            TeXViewBorderDecoration(
+                borderColor: Colors.blue,
+                borderStyle: TeXViewBorderStyle.solid,
+                borderWidth: 5),
           ),
-          loadingWidgetBuilder: (context) => Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    CircularProgressIndicator(),
-                    Text("Rendering...")
-                  ],
-                ),
-              )),
+          backgroundColor: Colors.white,
+        ),
+        loadingWidgetBuilder: (context) => const Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircularProgressIndicator(),
+              Text("Rendering...")
+            ],
+          ),
+        ),
+      ),
     );
   }
 
