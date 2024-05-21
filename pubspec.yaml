@@ -10,10 +10,9 @@ environment:
   sdk: ">=2.16.0 <3.0.0"
   flutter: ">=1.17.0"
 
-
 dependencies:
-  webview_flutter: ^4.4.1
-  markdown: ^7.1.1
+  webview_flutter: ^4.7.0
+  markdown: ^7.2.2
 
   flutter:
     sdk: flutter
@@ -29,7 +28,7 @@ flutter:
   assets:
     - packages/flutter_tex/js/flutter_tex.js
     - packages/flutter_tex/js/flutter_tex.css
-# MathJax
+    # MathJax
     - packages/flutter_tex/js/mathjax/extensions/MathEvents.js
     - packages/flutter_tex/js/mathjax/extensions/MathZoom.js
     - packages/flutter_tex/js/mathjax/extensions/AssistiveMML.js
@@ -162,8 +161,8 @@ flutter:
     - packages/flutter_tex/js/mathjax/LICENSE
     - packages/flutter_tex/js/mathjax/MathJax.js
     - packages/flutter_tex/js/mathjax/index.html
-    
-# Katex
+
+    # Katex
     - packages/flutter_tex/js/katex/index.html
     - packages/flutter_tex/js/katex/katex.min.js
     - packages/flutter_tex/js/katex/katex.min.css
