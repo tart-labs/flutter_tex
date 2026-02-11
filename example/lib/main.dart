@@ -57,27 +57,31 @@ class _TeXViewFullExampleState extends State<TeXViewFullExample> {
               height: 200,
             ),
           ),
-          RadioListTile<int>(
-            value: 0,
+          RadioGroup(
             groupValue: radVal,
             onChanged: (val) {
               setState(() {
-                radVal = val!;
+                radVal = int.parse(val.toString());
               });
             },
-            title: const Text("Katex"),
-            subtitle: const Text("RenderingEngine for Fast Rendering"),
+            child: RadioListTile<int>(
+              value: 0,
+              title: const Text("Katex"),
+              subtitle: const Text("RenderingEngine for Fast Rendering"),
+            ),
           ),
-          RadioListTile<int>(
-            value: 1,
+          RadioGroup(
             groupValue: radVal,
             onChanged: (val) {
               setState(() {
-                radVal = val!;
+                radVal = int.parse(val.toString());
               });
             },
-            title: const Text("MathJax"),
-            subtitle: const Text("RenderingEngine for Quality Rendering"),
+            child: RadioListTile<int>(
+              value: 1,
+              title: const Text("MathJax"),
+              subtitle: const Text("RenderingEngine for Quality Rendering"),
+            ),
           ),
           const Divider(
             height: 30,
@@ -129,8 +133,8 @@ class _TeXViewFullExampleState extends State<TeXViewFullExample> {
       padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
         style: ButtonStyle(
-            elevation: MaterialStateProperty.all(5),
-            backgroundColor: MaterialStateProperty.all(Colors.white)),
+            elevation: WidgetStateProperty.all(5),
+            backgroundColor: WidgetStateProperty.all(Colors.white)),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => widget));
